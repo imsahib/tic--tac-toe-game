@@ -150,7 +150,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                    i=position_insertion(arr,2,loc);
                 return i;
-                break;
+               
 
 
 
@@ -164,7 +164,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                     i= position_insertion(arr,2,loc);
                 return i;
-                break;
+                
         case 3:
                 if(arr[0][2]==arr[0][1] && overlapping(arr,0,0)==1)
                    i= position_insertion(arr,2,1);
@@ -181,7 +181,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                      i=position_insertion(arr,2,loc);
                 return i;
-                break;
+                
         case 4:
                 if(arr[1][0]==arr[0][0] && overlapping(arr,2,0)==1)
                     i=position_insertion(arr,2,7);
@@ -194,7 +194,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                      i=position_insertion(arr,2,loc);
                 return i;
-                break;
+                
         case 5:
                if(arr[1][1]==arr[1][0] && overlapping(arr,1,2)==1)
                     i=position_insertion(arr,2,6);
@@ -215,7 +215,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                      i=position_insertion(arr,2,loc);
                 return i;
-                break;
+                
 
         case 6:
                 if(arr[1][2]==arr[1][1] && overlapping(arr,1,0)==1)
@@ -229,7 +229,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                     i=position_insertion(arr,2,loc);
                 return i;
-                break;
+               
         case 7:
                 if(arr[2][0]==arr[2][1] && overlapping(arr,2,2)==1)
                     i=position_insertion(arr,2,9);
@@ -246,7 +246,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                     i=position_insertion(arr,2,loc);
                 return i;
-                break;
+               
         case 8:
                 if(arr[2][1]==arr[2][0] && overlapping(arr,2,2)==1)
                     i=position_insertion(arr,2,9);
@@ -259,7 +259,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                      i=position_insertion(arr,2,loc);
                 return i;
-                break;
+                
         case 9:
                 if(arr[2][2]==arr[2][1] && overlapping(arr,2,0)==1)
                     i=position_insertion(arr,2,7);
@@ -276,7 +276,7 @@ int check_winning_condition(int arr[3][3],int userChoice)
                 else
                      i=position_insertion(arr,2,loc);
                 return i;
-                break;
+                
         default:
                 printf("invalid choice try again");
     }
