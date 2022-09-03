@@ -31,7 +31,7 @@ void showGame(int arr[3][3])
 
 }
 
-int position_insertion(int arr[3][3],int num,int choice)
+int position_insertion(int arr[3][3],int num,int choice)      
 {
     /*
         this function is for inserting the 0 or X at desired position by user/ computer
@@ -464,7 +464,12 @@ void play_with_smart_computer()
 }                                                             // and loop continues and ask user again to enter it.
 
 int evil_moves(int arr[3][3])
-{
+{ 
+    /*
+        these are the all possible cases where the user can win after the insertion of computer.
+        by this computer blocks all the possible scenarios of winning the game by user.
+        -> here arr[x][y]==88 ensures that it checks the symbol of user i.e 'X' only.
+        */
     int i=0;
     if(arr[0][0]==88 && arr[0][0]==arr[1][1] && arr[2][2]==9)
          i= position_insertion(arr,2,9);
@@ -486,6 +491,12 @@ int evil_moves(int arr[3][3])
 
 void play_with_evil_computer()
 {
+    /*
+            this function is for to play between user and evil computer . In this it do the cheating whenever the user is going to win it blocks all
+            the possible scenarios and computer always win in this game.
+            player symbol='X'
+            computer symbol='0'
+    */
 
     int i,flag,choice,arr[3][3]={1,2,3,4,5,6,7,8,9};
     char first[20];
@@ -495,31 +506,35 @@ void play_with_evil_computer()
     printf("\n\n\n");
     printf("%s  X\n\n",first);
     printf("Computer 0\n\n");
-    showGame(arr);
+    showGame(arr);    // it displays the game
     while(1)
     {
         level_1:
          printf("\n\n");
-         if(empty_choice(arr)==-1)
+         if(empty_choice(arr)==-1)          // checks the vacant spaces in 2D array are available or not
             {
                 printf("\n\nGame drawn\n\n");
                 break;
             }
           printf("player-1- %s Enter position Number-> ",first);
           scanf("%d",&choice);
-        flag=position_insertion(arr,1,choice);
-        if(flag==-1)
+        flag=position_insertion(arr,1,choice);       // inserts the symbol of user at desired location
+        if(flag==-1)                                 // it represnts the overloading condition
          goto level_1;
-        else if(flag==1)
+        else if(flag==1)                             // it represents the winning scenario
             break;
          else
         {
-            i=check_winning_condition(arr,choice);
-            if(i==-1 || i==1)
-                break;
-           i= evil_moves(arr);
-           if(i==1)
-                break;
+            i=check_winning_condition(arr,choice);         // computer turn  -> it checks the winning condition of user and blocks it by inserting its symbol over there.
+            if(i==-1 || i==1)                             //                     and also determine its winning senarios as well.
+                break;                          //   it return -1 if game is drawn and end the game 
+                                                //   it returns 1 if computer wons it and end the game
+                                                //  it returns 0 if invalid choice enetered by user. but that case is handled in function itself by displaying appropiate message to user
+                                                //  and loop continues and ask user again to enter it.
+             
+             i= evil_moves(arr);                // this function call determines possible all possible cases where user can win and blocks it there by inserting its symbol 0 there.         
+             if(i==1)                                    
+                break;                                   
 
         }
 
@@ -527,7 +542,10 @@ void play_with_evil_computer()
 
 }
 int menu_driven()
-{
+{ /*
+        menu driven program
+        and return the choice eneterd by user 
+  */
     int choice;
     printf("\n1.want to play with Smart computer");
     printf("\n2.want to play with Evil computer");
@@ -543,7 +561,7 @@ void main()
 {
     while(1)
     {
-         switch(menu_driven())
+         switch(menu_driven())               // takes the choice as an input given by menu_driven function.
          {
             case 1:
                    play_with_smart_computer();
